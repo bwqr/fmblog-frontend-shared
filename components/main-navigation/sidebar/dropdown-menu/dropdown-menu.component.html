@@ -1,0 +1,17 @@
+<aside class="menu">
+  <ul class="menu-list">
+    <li *ngFor="let menu of menus" #el>
+      <a [routerLink]="[menu.url]" *ngIf="menu.children.length === 0; else dropdown" >
+        {{menu.name}}
+      </a>
+      <ng-template #dropdown>
+        <a (click)="el.classList.toggle('open')">
+          {{menu.name}}
+            <mat-icon class="chevron-down">keyboard_arrow_down</mat-icon>
+        </a>
+
+        <app-dropdown-menu [menus]="menu.children"></app-dropdown-menu>
+      </ng-template>
+    </li>
+  </ul>
+</aside>
