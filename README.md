@@ -15,4 +15,3 @@ This module consists the shared components, dialogs and pipes.
 **Installation**
 1. Add the module to Angular Project as a submodule. 
 `git submodule add https://github.com/bwqr/fmblog-frontend-shared src/app/shared`
-2. Import `SharedModule` from inside `AppModule`.
