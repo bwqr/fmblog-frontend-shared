@@ -5,6 +5,7 @@ This module consists the shared components, dialogs and pipes.
 **Required Packages**
 1. "@angular/cdk": "^7.3.6"
 2. "@angular/material": "^7.3.6"
+3. "bulma": "^0.7.4",
 
 **Required Modules**
 *--no required modules--*
