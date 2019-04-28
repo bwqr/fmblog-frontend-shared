@@ -15,3 +15,5 @@ This module consists the shared components, dialogs and pipes.
 **Installation**
 1. Add the module to Angular Project as a submodule. 
 `git submodule add https://github.com/bwqr/fmblog-frontend-shared src/app/shared`
+2. Incule one of the @angular/material prebuilt theme in your angular.json file or styles.scss file. eg.
+"node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
