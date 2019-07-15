@@ -1,0 +1,41 @@
+<ng-template #loading>
+    <mat-spinner class="loading"></mat-spinner>
+</ng-template>
+
+<div class="container" *ngIf="isPageReady; else loading">
+    <section class="paginate">
+        <mat-card>
+            <div class="title">
+                <h1 class="is-size-3">{{title}}</h1>
+                <hr>
+            </div>
+
+            <table class="table is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <td *ngFor="let column of columns">{{column}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-link" *ngFor="let row of pagination.data" [routerLink]="[editLink.url, row[editLink.key]]">
+                        <td *ngFor="let column of row._columns">
+                            {{column}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <mat-paginator [length]="pagination.total" [pageSize]="pagination.per_page"
+                        [pageSizeOptions]="service.pageSizeOptions" [pageIndex]="pagination.current_page - 1"
+                        (page)="service.changePageOptions(helpersService, $event)">
+                    </mat-paginator>
+                </tfoot>
+            </table>
+        </mat-card>
+    </section>
+
+
+    <button mat-fab class="add-btn" [routerLink]="[addLink]">
+        <mat-icon>add</mat-icon>
+    </button>
+
+</div>
