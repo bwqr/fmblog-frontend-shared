@@ -34,7 +34,7 @@
     </section>
 
 
-    <button mat-fab class="add-btn" [routerLink]="[addLink]">
+    <button mat-fab class="add-btn" [routerLink]="[addLink]" *ngIf="addLink">
         <mat-icon>add</mat-icon>
     </button>
 
