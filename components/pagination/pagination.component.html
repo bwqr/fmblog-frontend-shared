@@ -10,6 +10,30 @@
                 <hr>
             </div>
 
+            <div class="is-fullwidth">
+                <div class="columns">
+                    <div class="column is-half is-offset-half">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <mat-form-field>
+                                    <input matInput placeholder="Anahtar Kelime" (keyup)="search(term.value, field.value)" #term>
+                                </mat-form-field>
+                            </div>
+                            <div class="column is-half">
+                                <mat-form-field>
+                                    <mat-label>Alan</mat-label>
+                                    <mat-select #field (selectionChange)="search(term.value, field.value)">
+                                        <mat-option *ngFor="let column of columns; let i=index" [value]="i">
+                                            {{column}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <table class="table is-fullwidth is-hoverable">
                 <thead>
                     <tr>
@@ -17,7 +41,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-link" *ngFor="let row of pagination.data" [routerLink]="[editLink.url, row[editLink.key]]">
+                    <tr class="table-link" *ngFor="let row of filteredValues"
+                        [routerLink]="[editLink.url, row[editLink.key]]">
                         <td *ngFor="let column of row._columns">
                             {{column}}
                         </td>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { Subscription, Subject } from 'rxjs';
+import { switchMap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pagination',
@@ -30,10 +30,14 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   pagination: any;
 
+  filteredValues: any;
+
   subs = new Subscription();
 
+  private searchTerms = new Subject<any>();
+
   get isPageReady(): boolean {
-    return this.pagination && true;
+    return this.filteredValues && this.pagination;
   }
 
   constructor(
@@ -60,12 +64,46 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
           return pagination;
         })
-      ).subscribe(response => this.pagination = response)
+      ).subscribe(response => {
+        this.pagination = response;
+        this.filteredValues = response.data;
+      })
+    );
+
+    this.subs.add(
+      this.searchTerms.pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        map(
+          (searchTerm: any) => {
+            console.log(searchTerm.term);
+            if (searchTerm.term.trim()) {
+              return this.pagination.data
+                .filter((row: any) => {
+                  console.log(row._columns[searchTerm.key]);
+                  console.log(row._columns[searchTerm.key]);
+                  console.log(JSON.stringify(row._columns[searchTerm.key]).indexOf(searchTerm.term) >= 0);
+                  return row._columns[searchTerm.key] !== 'undefined' &&
+                    JSON.stringify(row._columns[searchTerm.key]).indexOf(searchTerm.term) >= 0;
+                });
+            } else {
+              return this.pagination.data;
+            }
+
+          }
+        )
+      ).subscribe(values => this.filteredValues = values)
     );
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  search(term: string, key: string): void {
+    if (typeof key !== 'undefined') {
+      this.searchTerms.next({ term: term, key: key });
+    }
   }
 
 }
