@@ -80,11 +80,10 @@ export class PaginationComponent implements OnInit, OnDestroy {
             if (searchTerm.term.trim()) {
               return this.pagination.data
                 .filter((row: any) => {
-                  console.log(row._columns[searchTerm.key]);
-                  console.log(row._columns[searchTerm.key]);
-                  console.log(JSON.stringify(row._columns[searchTerm.key]).indexOf(searchTerm.term) >= 0);
+                  const stringified = JSON.stringify(row._columns[searchTerm.key]);
                   return row._columns[searchTerm.key] !== 'undefined' &&
-                    JSON.stringify(row._columns[searchTerm.key]).indexOf(searchTerm.term) >= 0;
+                    (stringified.indexOf(searchTerm.term) >= 0 ||
+                      stringified.toLocaleLowerCase().indexOf(searchTerm.term.toLocaleLowerCase()) >= 0);
                 });
             } else {
               return this.pagination.data;
