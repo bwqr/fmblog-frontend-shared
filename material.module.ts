@@ -2,33 +2,27 @@ import { NgModule } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
-import {
-  MatDialogModule,
-  MatButtonModule,
-  MatCardModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatSidenavModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatCheckboxModule,
-  MatSliderModule,
-  MatProgressBarModule,
-  MatTabsModule,
-  MatPaginatorModule,
-  MatTableModule,
-  MatListModule,
-  MatChipsModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatTooltipModule,
-  MatSnackBarModule,
-  MatIconModule,
-  MatExpansionModule
-} from '@angular/material';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -38,7 +32,6 @@ import {
     MatInputModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatSidenavModule,
     MatMenuModule,
     MatToolbarModule,
@@ -48,11 +41,9 @@ import {
     MatTabsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatListModule,
     MatChipsModule,
     MatRadioModule,
     MatSelectModule,
-    MatTooltipModule,
     MatSnackBarModule,
     CdkTableModule,
     MatIconModule,
@@ -66,7 +57,6 @@ import {
     MatInputModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatSidenavModule,
     MatMenuModule,
     MatToolbarModule,
@@ -76,11 +66,9 @@ import {
     MatTabsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatListModule,
     MatChipsModule,
     MatRadioModule,
     MatSelectModule,
-    MatTooltipModule,
     MatSnackBarModule,
     CdkTableModule,
     MatIconModule,
