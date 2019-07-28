@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import {
   MatDialogModule,
@@ -55,7 +56,8 @@ import {
     MatSnackBarModule,
     CdkTableModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ],
   exports: [
     MatDialogModule,
@@ -82,7 +84,8 @@ import {
     MatSnackBarModule,
     CdkTableModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ]
 })
 
