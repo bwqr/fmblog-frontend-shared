@@ -1,6 +1,6 @@
 <div class="" *ngIf="isPageReady">
   <div class="gallery-images">
-    <div class="gallery-image" *ngFor="let image of images.public">
+    <div class="gallery-image" *ngFor="let image of images">
       <a (click)="selectImage(image)">
         <figure class="image is-128x128">
           <img [src]="THUMB_IMAGE_URL + image.u_id" [alt]=image.alt>

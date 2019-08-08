@@ -22,7 +22,7 @@ export class ImageSelectComponent implements OnInit {
   ) {
     this.THUMB_IMAGE_URL = dialog_data.thumb_image_url;
 
-    dialog_data.image_request.subscribe(response => this.images = response);
+    dialog_data.image_request.subscribe(response => this.images = response.filter(image => image.public));
   }
 
   ngOnInit() {
