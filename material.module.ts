@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CdkTableModule,
     MatIconModule,
     MatExpansionModule,
-    DragDropModule
+    DragDropModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatDialogModule,
@@ -73,7 +75,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CdkTableModule,
     MatIconModule,
     MatExpansionModule,
-    DragDropModule
+    DragDropModule,
+    MatSlideToggleModule
   ]
 })
 
