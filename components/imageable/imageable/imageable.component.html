@@ -1,0 +1,38 @@
+<div>
+    <mat-card>
+
+        <div class="title">
+            <h1 class="is-size-3">Galeri</h1>
+            <hr>
+        </div>
+
+        <div class="action-center">
+            <div class="columns">
+                <div class="column is-half">
+                    <ul class="is-unstyled">
+                        <li>
+                            <button mat-raised-button color="primary" (click)="onSaveOrder()" [disabled]="!save">
+                                <mat-icon>save</mat-icon> Kaydet
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column is-half" id="deleteGallery" #deleteList="cdkDropList" cdkDropList
+                    (cdkDropListDropped)="onDeleteImage($event)">
+                    <p>Sürükle ve Bırak</p>
+                    <mat-icon>delete</mat-icon>
+                </div>
+            </div>
+        </div>
+            <hr>
+
+        <div cdkDropList [cdkDropListConnectedTo]="[deleteList]" (cdkDropListDropped)="drop($event)"
+            cdkDropListSortingDisabled="true" class="columns is-multiline">
+            <div cdkDrag [cdkDragData]="image" [cdkDragStartDelay]="200"
+                class="column is-one-quarter-desktop is-one-third-tablet" *ngFor="let image of images">
+                <img [src]="imageUrl + image[imageKey]">
+            </div>
+        </div>
+        <hr>
+    </mat-card>
+</div>

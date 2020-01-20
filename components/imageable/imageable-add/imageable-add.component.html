@@ -1,0 +1,35 @@
+<div *ngIf="isPageReady">
+
+    <form #f="ngForm" (ngSubmit)="onPostImages(f)">
+        <div class="columns">
+            <div class="column is-one-third">
+
+                <mat-card *ngIf="progressValue !== -1">
+                    <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
+                </mat-card>
+
+                <mat-card>
+                    <div class="field">
+                        <button mat-button (click)="file.click()" type="button">Resim Yükle</button>
+                    </div>
+                   
+                    <ul cdkDropList (cdkDropListDropped)="drop($event)">
+                        <li cdkDrag *ngFor="let image of images; let i = index">
+                            <div class="image-container">
+                                <mat-icon class="close-icon" (click)="removeImage(i)"> close</mat-icon>
+                                <img src="" [id]="'image-'+ i">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <input type="file" #file style="display: none" (change)="showImage()" ngModel name="image" multiple>
+
+                   
+                    <button mat-raised-button class="is-12" type="submit" [disabled]="!f.valid || images.length === 0">
+                        Ekle
+                    </button>
+                </mat-card>
+            </div>
+        </div>
+    </form>
+</div>

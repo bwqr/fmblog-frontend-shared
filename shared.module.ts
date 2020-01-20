@@ -11,11 +11,15 @@ import { ImageSelectComponent } from './dialogs/images/image-select/image-select
 import { UrlPipe } from './pipes/url.pipe';
 import { EnvironmentUrlPipe } from './pipes/environment-url.pipe';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ImageableAddComponent } from './components/imageable/imageable-add/imageable-add.component';
+import { ImageableComponent } from './components/imageable/imageable/imageable.component';
 
 @NgModule({
   declarations: [
     ImageSelectComponent,
     PaginationComponent,
+    ImageableAddComponent,
+    ImageableComponent,
     UrlPipe,
     EnvironmentUrlPipe
   ],
@@ -33,7 +37,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     UrlPipe,
     EnvironmentUrlPipe,
     RouterModule,
-    PaginationComponent
+    PaginationComponent,
+    ImageableAddComponent,
+    ImageableComponent
   ],
   entryComponents: [
     ImageSelectComponent
