@@ -8,12 +8,14 @@ import { NgForm } from '@angular/forms';
 })
 export class ImageableAddComponent implements OnInit {
 
-  images: any = [];
+  loading = false;
+
+  images: Array<any> = [];
 
   // Not yet started
   progressValue = -1;
 
-  @Output() postImages: EventEmitter<any> = new EventEmitter();
+  @Output() postImage: EventEmitter<any> = new EventEmitter();
 
   get isPageReady(): boolean {
     return this.images && true;
@@ -27,22 +29,55 @@ export class ImageableAddComponent implements OnInit {
   }
 
   onPostImages(f: NgForm) {
+    if (this.loading) {
+      return;
+    }
+
+    this.loading = true;
+
+    const stack = [];
+
+    for (const image of this.images) {
+      stack.push(image);
+    }
+
     this.progressValue = 0;
 
-    const data = {
-      images: this.images,
-      onEach: () => {
-        this.images.splice(0, 1);
+    const concurrency = Math.min(3, this.images.length);
 
-        if (this.images.length === 0) {
-          this.progressValue = -1;
-        } else {
-          this.progressValue += (100 - this.progressValue) / this.images.length;
-        }
-      }
-    };
+    for (let i = 0; i < concurrency; i++) {
+      const image = stack.shift();
 
-    this.postImages.emit(data);
+      this.postImage.emit({
+        image: image,
+        onSuccess: () => this.onSuccess(image, stack)
+      });
+    }
+  }
+
+  onSuccess(image: any, stack: Array<any>) {
+    const index = this.images.findIndex(_image => image.name === image.name);
+    this.images.splice(index, 1);
+
+    if (stack.length !== 0) {
+      const newImage = stack.shift();
+
+      this.postImage.emit({
+        image: newImage,
+        onSuccess: () => this.onSuccess(newImage, stack)
+      });
+
+      this.progressValue += (100 - this.progressValue) / stack.length;
+
+      return false;
+    }
+
+
+    this.progressValue = -1;
+
+    this.loading = false;
+
+    return true;
   }
 
   removeImage(index: number) {

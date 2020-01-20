@@ -12,6 +12,10 @@
                     <div class="field">
                         <button mat-button (click)="file.click()" type="button">Resim Yükle</button>
                     </div>
+
+                    <button mat-raised-button class="is-12" type="submit" [disabled]="loading || images.length === 0">
+                        Ekle
+                    </button>
                    
                     <ul cdkDropList (cdkDropListDropped)="drop($event)">
                         <li cdkDrag *ngFor="let image of images; let i = index">
@@ -25,9 +29,7 @@
                     <input type="file" #file style="display: none" (change)="showImage()" ngModel name="image" multiple>
 
                    
-                    <button mat-raised-button class="is-12" type="submit" [disabled]="!f.valid || images.length === 0">
-                        Ekle
-                    </button>
+                
                 </mat-card>
             </div>
         </div>
