@@ -76,7 +76,6 @@ export class PaginationComponent implements OnInit, OnDestroy {
         distinctUntilChanged(),
         map(
           (searchTerm: any) => {
-            console.log(searchTerm.term);
             if (searchTerm.term.trim()) {
               return this.pagination.data
                 .filter((row: any) => {
