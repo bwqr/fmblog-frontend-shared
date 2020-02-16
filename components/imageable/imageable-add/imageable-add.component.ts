@@ -21,7 +21,7 @@ export class ImageableAddComponent implements OnInit {
     return this.images && true;
   }
 
-  @ViewChild('file', { static: false }) file: ElementRef;
+  @ViewChild('file') file: ElementRef;
 
   constructor() { }
 
