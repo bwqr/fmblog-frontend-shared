@@ -1,0 +1,83 @@
+<div class="columns is-multiline">
+    <div class="column is-12">
+
+        <div class="field">
+            <p class="title is-size-4 has-text-weight-light">{{title}}</p>
+            <hr>
+        </div>
+
+        <nav class="action-center navbar is-transparent">
+            <div class="navbar-menu">
+                <ul class="navbar-start">
+                    <li class="navbar-item">
+                        <button mat-raised-button type="button" color="primary"
+                            (click)="saveSectionAndFormFieldOrders()">
+                            <mat-icon>save</mat-icon> Sıralamayı Kaydet
+                        </button>
+                    </li>
+                    <li class="navbar-item">
+                        <button mat-raised-button type="button" color="primary" (click)="openAddSection()">
+                            <mat-icon>add</mat-icon> Yeni Bolum Ekle
+                        </button>
+                    </li>
+                    <li class="navbar-item">
+                        <button mat-raised-button type="button" color="primary" (click)="openAddField()">
+                            <mat-icon>add</mat-icon> Yeni Alan Ekle
+                        </button>
+                    </li>
+                    <li class="navbar-item">
+                        <button mat-raised-button type="button" color="accent"
+                            (click)="isEditting = !isEditting; isDeleting = false">
+                            <mat-icon>edit</mat-icon> Duzenlemeyi Ac/Kapat
+                        </button>
+                    </li>
+                    <li class="navbar-item">
+                        <button mat-raised-button type="button" color="warn"
+                            (click)="isDeleting = !isDeleting; isEditting = false">
+                            <mat-icon>delete</mat-icon> Silmeyi Ac/Kapat
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <hr>
+
+        <div class="columns is-multiline" cdkDropList
+            (cdkDropListDropped)="service.verticalDropEvent($event, sections)">
+            <div cdkDrag class="column is-one-third-desktop is-half-tablet" *ngFor="let section of sections">
+                <div class="field">
+                    <p>
+                        <button mat-icon-button aria-label="Add" type="button" (click)="openEditSection(section)"
+                            class="is-paddingless" *ngIf="isEditting">
+                            <mat-icon class="is-size-6">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button aria-label="Add" type="button" (click)="emitDeleteSection(section)"
+                            class="is-paddingless" *ngIf="isDeleting">
+                            <mat-icon class="is-size-6">delete</mat-icon>
+                        </button>
+                        {{section.name}}
+                    </p>
+                </div>
+                <table class="table is-bordered is-fullwidth" cdkDropList
+                    (cdkDropListDropped)="service.verticalDropEvent($event, section.form_fields)">
+                    <tr cdkDrag *ngFor="let field of section.form_fields">
+
+                        <td>
+                            <button mat-icon-button aria-label="Add" type="button" (click)="openEditField(field)"
+                                class="is-paddingless" *ngIf="isEditting">
+                                <mat-icon class="is-size-6">edit</mat-icon>
+                            </button>
+                            <button mat-icon-button aria-label="Add" type="button" (click)="emitDeleteField(field)"
+                                class="is-paddingless" *ngIf="isDeleting">
+                                <mat-icon class="is-size-6">delete</mat-icon>
+                            </button>
+                            {{field.title}}
+                        </td>
+                        <td>{{field.type}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

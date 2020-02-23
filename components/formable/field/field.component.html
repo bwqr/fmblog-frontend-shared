@@ -1,0 +1,59 @@
+<form #f="ngForm">
+    <div class="field">
+        <mat-select placeholder="Form Türü" [(ngModel)]="field.type" name="type" [disabled]="!isNewField">
+            <mat-option *ngFor="let type of types" [value]="type.type">
+                {{ type.name }}
+            </mat-option>
+        </mat-select>
+    </div>
+
+    <div class="field">
+        <div class="field">
+            <mat-form-field>
+                <input matInput placeholder="İsim" [(ngModel)]="field.title" name="title" required>
+            </mat-form-field>
+        </div>
+
+        <div class="field">
+            <mat-form-field>
+                <input matInput placeholder="Alt isim" [(ngModel)]="field.placeholder" name="placeholder" required>
+            </mat-form-field>
+        </div>
+        <div class="field">
+            <mat-select placeholder="Bölüm" [(ngModel)]="field.section_id" name="section_id" [disabled]="!isNewField">
+                <mat-option *ngFor="let section of sections" [value]="section.id">
+                    {{ section.name }}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="field" *ngIf="field.type === 'radio' || field.type === 'select'">
+            <div class="field">
+                <mat-chip-list aria-label="Option Add">
+                    <mat-chip *ngFor="let opt of field.options; let i=index">
+                        {{opt}}
+                        <mat-icon matChipRemove (click)="removeOption(i)">cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div class="field">
+                <mat-form-field>
+                    <input matInput placeholder="Seçenekler" (keyup.enter)="addOption(option)"
+                        type="text" #option>
+                    <button mat-button matSuffix mat-icon-button aria-label="Add" type="button"
+                        (click)="addOption(option)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="columns is-marginless">
+            <div class="column is-half">
+                <button mat-raised-button color="warn" class="is-12" type="button" (click)="close()">Kapat</button>
+            </div>
+            <div class="column is-half">
+                <button mat-raised-button class="is-12" type="button" (click)="save()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</form>
