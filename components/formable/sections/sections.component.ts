@@ -118,6 +118,7 @@ export class SectionsComponent implements OnInit {
         const data = {
           title: result.title,
           placeholder: result.placeholder,
+          section_id: result.section_id,
           id: result.id
         };
 
