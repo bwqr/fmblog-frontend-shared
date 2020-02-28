@@ -20,7 +20,7 @@
             </mat-form-field>
         </div>
         <div class="field">
-            <mat-select placeholder="Bölüm" [(ngModel)]="field.section_id" name="section_id" [disabled]="!isNewField">
+            <mat-select placeholder="Bölüm" [(ngModel)]="field.section_id" name="section_id">
                 <mat-option *ngFor="let section of sections" [value]="section.id">
                     {{ section.name }}
                 </mat-option>
