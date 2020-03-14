@@ -33,7 +33,8 @@ export class FieldComponent implements OnInit {
     { type: 'checkbox', name: 'Checkbox' },
     { type: 'file', name: 'File' },
     { type: 'number', name: 'Number' },
-    { type: 'select', name: 'Select' }
+    { type: 'select', name: 'Select' },
+    { type: 'g-recaptcha', name: 'ReCaptcha'}
   ];
 
   constructor(
