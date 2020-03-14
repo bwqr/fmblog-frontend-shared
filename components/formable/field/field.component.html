@@ -1,6 +1,6 @@
 <form #f="ngForm">
     <div class="field">
-        <mat-select placeholder="Form Türü" [(ngModel)]="field.type" name="type" [disabled]="!isNewField">
+        <mat-select placeholder="Form Türü" [(ngModel)]="field.type" name="type">
             <mat-option *ngFor="let type of types" [value]="type.type">
                 {{ type.name }}
             </mat-option>

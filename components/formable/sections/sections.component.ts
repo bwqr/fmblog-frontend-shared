@@ -23,6 +23,8 @@ export class SectionsComponent implements OnInit {
 
   @Output() createFieldCallback = new EventEmitter();
 
+  @Output() updateFieldCallback = new EventEmitter();
+
   @Output() createField = new EventEmitter();
 
   @Output() createSection = new EventEmitter();
@@ -101,30 +103,36 @@ export class SectionsComponent implements OnInit {
   }
 
   openEditField(field: any) {
-    const dialogRef = this.dialog.open(FieldComponent, {
-      disableClose: true,
-      data: {
-        field: this.deepCopy(field),
-        sections: this.sections
-      }
-    });
+    if (this.updateFieldCallback.observers.length !== 0) {
+      this.updateFieldCallback.emit({field: this.deepCopy(field), sections: this.sections});
+    } else {
 
-    this.subs.add(
-      dialogRef.afterClosed().subscribe(result => {
-        if (!result) {
-          return;
+      const dialogRef = this.dialog.open(FieldComponent, {
+        disableClose: true,
+        data: {
+          field: this.deepCopy(field),
+          sections: this.sections
         }
+      });
 
-        const data = {
-          title: result.title,
-          placeholder: result.placeholder,
-          section_id: result.section_id,
-          id: result.id
-        };
+      this.subs.add(
+        dialogRef.afterClosed().subscribe(result => {
+          if (!result) {
+            return;
+          }
 
-        this.updateField.emit(data);
-      })
-    );
+          const data = {
+            title: result.title,
+            placeholder: result.placeholder,
+            section_id: result.section_id,
+            type: result.type,
+            id: result.id
+          };
+
+          this.updateField.emit(data);
+        })
+      );
+    }
   }
 
   openEditSection(section: any) {
