@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
@@ -34,12 +34,14 @@ import { FieldComponent } from './components/formable/field/field.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     UrlPipe,
     EnvironmentUrlPipe,
     RouterModule,

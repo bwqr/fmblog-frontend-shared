@@ -28,7 +28,7 @@
 
         <div cdkDropList [cdkDropListConnectedTo]="[deleteList]" (cdkDropListDropped)="drop($event)"
             cdkDropListSortingDisabled="true" class="columns is-multiline">
-            <div cdkDrag [cdkDragData]="image" [cdkDragStartDelay]="200"
+            <div cdkDrag [cdkDragData]="image" [cdkDragStartDelay]="20"
                 class="column is-one-quarter-desktop is-one-third-tablet" *ngFor="let image of images">
                 <img [src]="imageUrl + image[imageKey]">
             </div>
