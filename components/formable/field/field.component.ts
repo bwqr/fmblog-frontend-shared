@@ -19,7 +19,8 @@ export class FieldComponent implements OnInit {
     title: '',
     type: '',
     placeholder: '',
-    options: []
+    options: [],
+    required: true
   };
 
   get isNewField(): boolean {

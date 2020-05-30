@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { SectionComponent } from '../section/section.component';
-import { Subscription } from 'rxjs';
-import { FieldComponent } from '../field/field.component';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {SectionComponent} from '../section/section.component';
+import {Subscription} from 'rxjs';
+import {FieldComponent} from '../field/field.component';
 
 @Component({
   selector: 'app-sections',
@@ -15,7 +15,7 @@ export class SectionsComponent implements OnInit {
 
   @Input() title: string;
 
-  @Input() sections: Array<any>
+  @Input() sections: Array<any>;
 
   @Input() service: any;
 
@@ -45,7 +45,8 @@ export class SectionsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -92,8 +93,9 @@ export class SectionsComponent implements OnInit {
             title: result.title,
             type: result.type,
             placeholder: result.placeholder,
-            options: result.options.map(option => ({ title: option, value: this.service.uuidv4() })),
-            section_id: result.section_id
+            options: result.options.map(option => ({title: option, value: this.service.uuidv4()})),
+            section_id: result.section_id,
+            required: result.required
           };
 
           this.createField.emit(data);
@@ -126,7 +128,8 @@ export class SectionsComponent implements OnInit {
             placeholder: result.placeholder,
             section_id: result.section_id,
             type: result.type,
-            id: result.id
+            id: result.id,
+            required: result.required
           };
 
           this.updateField.emit(data);
@@ -153,7 +156,7 @@ export class SectionsComponent implements OnInit {
   }
 
   emitDeleteSection(section: any) {
-    this.deleteSection.emit(section.id)
+    this.deleteSection.emit(section.id);
   }
 
   emitDeleteField(field: any) {
@@ -167,12 +170,12 @@ export class SectionsComponent implements OnInit {
     for (let i = 0; i < this.sections.length; i++) {
       const section = this.sections[i];
 
-      sectionWeights.push({ id: section.id, weight: i });
+      sectionWeights.push({id: section.id, weight: i});
 
       for (let j = 0; j < section.form_fields.length; j++) {
         const formField = section.form_fields[j];
 
-        formFieldWeights.push({ id: formField.id, weight: j });
+        formFieldWeights.push({id: formField.id, weight: j});
       }
     }
     this.updateWeights.emit({

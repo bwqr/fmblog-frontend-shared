@@ -47,6 +47,11 @@
                 </mat-form-field>
             </div>
         </div>
+
+      <div class="field">
+          <mat-checkbox [(ngModel)]="field.required" name="required">Required</mat-checkbox>
+      </div>
+
         <div class="columns is-marginless">
             <div class="column is-half">
                 <button mat-raised-button color="warn" class="is-12" type="button" (click)="close()">Kapat</button>
