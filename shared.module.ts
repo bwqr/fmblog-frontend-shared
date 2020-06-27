@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
-import { MaterialModule } from './material.module';
+import {MaterialModule} from './material.module';
 
-import { ImageSelectComponent } from './dialogs/images/image-select/image-select.component';
+import {ImageSelectComponent} from './dialogs/images/image-select/image-select.component';
 
-import { UrlPipe } from './pipes/url.pipe';
-import { EnvironmentUrlPipe } from './pipes/environment-url.pipe';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { ImageableAddComponent } from './components/imageable/imageable-add/imageable-add.component';
-import { ImageableComponent } from './components/imageable/imageable/imageable.component';
-import { SectionsComponent } from './components/formable/sections/sections.component';
-import { SectionComponent } from './components/formable/section/section.component';
-import { FieldComponent } from './components/formable/field/field.component';
+import {UrlPipe} from './pipes/url.pipe';
+import {EnvironmentUrlPipe} from './pipes/environment-url.pipe';
+import {PaginationComponent} from './components/pagination/pagination.component';
+import {ImageableAddComponent} from './components/imageable/imageable-add/imageable-add.component';
+import {ImageableComponent} from './components/imageable/imageable/imageable.component';
+import {SectionsComponent} from './components/formable/sections/sections.component';
+import {SectionComponent} from './components/formable/section/section.component';
+import {FieldComponent} from './components/formable/field/field.component';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FieldComponent } from './components/formable/field/field.component';
     FormsModule,
     ReactiveFormsModule,
     UrlPipe,
+    NgxSkeletonLoaderModule,
     EnvironmentUrlPipe,
     RouterModule,
     PaginationComponent,
@@ -58,4 +60,5 @@ import { FieldComponent } from './components/formable/field/field.component';
     FieldComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

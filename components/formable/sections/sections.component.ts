@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SectionComponent } from '../section/section.component';
 import { Subscription } from 'rxjs';
 import { FieldComponent } from '../field/field.component';
