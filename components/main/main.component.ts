@@ -1,4 +1,4 @@
-import {Component, Directive, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 // TODO: Add Angular decorator.
@@ -11,6 +11,8 @@ export abstract class MainComponent implements OnDestroy {
   subs = new Subscription();
 
   isProcessing = false;
+
+  abstract get isPageReady(): boolean;
 
   get isInProcessingState(): boolean {
     return this.isProcessing;
