@@ -17,6 +17,7 @@ import {SectionsComponent} from './components/formable/sections/sections.compone
 import {SectionComponent} from './components/formable/section/section.component';
 import {FieldComponent} from './components/formable/field/field.component';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
     EnvironmentUrlPipe,
     SectionsComponent,
     SectionComponent,
-    FieldComponent
+    FieldComponent,
+    CustomDatePipe,
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
     ImageableComponent,
     SectionsComponent,
     SectionComponent,
-    FieldComponent
+    FieldComponent,
+    CustomDatePipe,
   ],
   entryComponents: [
     ImageSelectComponent,
